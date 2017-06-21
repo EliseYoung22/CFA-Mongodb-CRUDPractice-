@@ -9,19 +9,13 @@ router.get('/', ingredientController.getIngredients);
 
 router.post('/', ingredientController.postIngredients);
 
-router.get('/ingredients/:id/edit',  ingredientController.editIngredients);
+router.get('/ingredients/:id/edit',  ingredientController.getEditIngredient);
 
 router.post('/ingredients/:id/edit',  ingredientController.updateIngredients);
 
 // router.post('/ingredients/:id/delete',  ingredientController.deleteIngredients);
 
-router.get('/ingredient/:id/delete', function(req, res){
-	Ingredient.findByIdAndRemove({_id: req.params.id},
-	   function(err){
-		if(err) res.json(err);
-		else    res.redirect('/ingredients');
-	});
-});
+router.delete('/ingredient/:id/delete', ingredientController.deleteIngredients);
 
 
 module.exports = router;

@@ -19,7 +19,7 @@ exports.postIngredientsApi = (req, res) => {
     })
 };
 
-exports.editSingleIngredientsApi = (req, res) => {
+exports.getEditIngredientsApi = (req, res) => {
   Ingredient.findOne({ _id: req.params.id })
   // shows params. req gets sent when the connection is goign to our server res is what we get sent back
   // res.send(req.params)
@@ -36,15 +36,17 @@ exports.updateIngredientsApi = (req, res) => {
     })
 };
 
-exports.deleteIngredientApi = function(req, res){
-	Ingredient.findByIdAndRemove({_id: req.params.id},
-	   function(err){
-		if(err) res.json(err);
-		else {
-      Ingredient.find()
-        .then(ingredients => {
-          res.json(ingredients)
-        })
-    };
-	});
+// exports.deleteIngredientApi = (req, res) => {
+//   console.log('delete params: ', req.params)
+// 	Ingredient.findOneAndRemove({ _id: req.params.id }, (err, ingredient) => {
+// 		if(err) { res.json(err) };
+// 		res.json(ingredient);
+// 	});
+// };
+
+exports.deleteIngredientsApi = (req,res) => {
+  Ingredient.findOneAndRemove({ _id: req.params.id})
+    .then(() => {
+      res.json(ingredient)
+    });
 };

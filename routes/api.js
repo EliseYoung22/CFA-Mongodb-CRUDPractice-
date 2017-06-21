@@ -2,17 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 const Ingredient = require('../models/Ingredient');
-const ingredientController = require ('../controllers/apiingredientController');
+const apiingredientController = require ('../controllers/apiingredientController');
 
-router.get('/', ingredientController.getIngredientsApi);
+router.get('/', apiingredientController.getIngredientsApi);
 
-router.post('/', ingredientController.postIngredientsApi);
+router.post('/', apiingredientController.postIngredientsApi);
 
-router.get('/:id', ingredientController.editSingleIngredientsApi);
+router.get('/:id', apiingredientController.getEditIngredientsApi);
 
-router.post('/:id/edit', ingredientController.updateIngredientsApi);
+router.post('/:id/edit', apiingredientController.updateIngredientsApi);
 
-router.delete('/:id/delete', ingredientController.deleteIngredientsApi);
+router.delete('/:id/delete', apiingredientController.deleteIngredientsApi);
 
 
 module.exports = router;
